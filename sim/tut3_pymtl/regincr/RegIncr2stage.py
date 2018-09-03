@@ -20,10 +20,17 @@ class RegIncr2stage( Model ):
     s.out = OutPort (8)
 
     # First stage
-
+    
     s.reg_incr_0 = RegIncr()
+    
+    # Second stage
+    s.reg_incr_1 = RegIncr()
 
+    # port connections
     s.connect( s.in_, s.reg_incr_0.in_ )
+    s.connect( s.reg_incr_0.out, s.reg_incr_1.in_ )
+    s.connect( s.reg_incr_1.out, s.out )
+
 
     # ''' TUTORIAL TASK ''''''''''''''''''''''''''''''''''''''''''''''''''
     # This model is incomplete. As part of the tutorial you will insert
